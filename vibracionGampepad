@@ -1,0 +1,35 @@
+//======================================================
+//// vibracionGamepad.js
+//======================================================
+
+
+/*:
+ * @plugindesc Prueba de plugin de vibracion
+ * @author Luis Ruiz
+ *
+ *
+ * @help
+ * Este plugin añade vibracion a los gamepad que lo acepten,
+ * el navegador Firefox no funciona.
+ * No se añaden parametros.
+ * 
+ * Plugin Command:
+ *   vibrateGamepad(0.5);
+ *   
+ */
+
+// Crea la funcion de vibracion
+
+function vibrateGamepad(intensity) {
+    const gamepad = navigator.getGamepads()[0];
+    gamepad.hapticActuators[0].pulse(intensity, 200);
+    gamepad.vibrationActuator.playEffect("dual-rumble", {
+      startDelay: 0,
+      duration: 200,
+      weakMagnitude: intensity,
+      strongMagnitude: intensity,
+    });
+  }
+
+
+  
